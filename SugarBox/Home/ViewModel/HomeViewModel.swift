@@ -8,26 +8,42 @@
 import UIKit
 
 protocol HomeViewModelProtocol: AnyObject {
-    
+    func reload()
+    func showMessgage()
 }
 
 class HomeViewModel: NSObject {
     
     weak var delegate: HomeViewModelProtocol?
     let service: ServiceProviderProtocol
-    var limit = 20
+    let limit = 20
     var skip = 1
+    var carousalDataSource = [Content]()
+    var widgetDataSource = [Content]()
+    var message:String?
+    
+    var feed:Feed? {
+        didSet {
+            filterDataSource()
+        }
+    }
     
     init(service: ServiceProviderProtocol = ServiceProvider() ){
         self.service = service
     }
     
     func fetchFeeds() {
-        service.fetchFeeds(pageNo:skip, limit: limit) { response in
-            
-        } failureCallback: { message in
-            
+        service.fetchFeeds(pageNo:skip, limit: limit) { [weak self] response in
+            self?.feed = response as? Feed
+            self?.delegate?.reload()
+        } failureCallback: {[weak self] message in
+            self?.message = message
         }
+    }
+    
+    func filterDataSource() {
+        carousalDataSource = self.feed?.data.filter{$0.designSlug == "CarousalWidget"} ?? []
+        widgetDataSource = self.feed?.data.filter{$0.designSlug == "OTTWidget"} ?? []
     }
     
 }

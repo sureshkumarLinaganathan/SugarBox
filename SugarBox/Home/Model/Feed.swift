@@ -16,6 +16,7 @@ struct Content: Codable {
     let description: String
     let title: String
     let contents: [SubContent]
+    let designSlug: String
 }
 
 struct SubContent: Codable {

@@ -23,9 +23,13 @@ class ApiManager {
             }
             
             let objs = Parser.decode(data: data, type: Feed.self)
-            successCallback(objs)
+            DispatchQueue.main.async {
+                successCallback(objs)
+            }
         }, failureCallback: { message in
-            
+            DispatchQueue.main.async {
+                failureCallback(message)
+            }
         })
     }
     

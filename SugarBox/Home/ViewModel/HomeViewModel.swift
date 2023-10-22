@@ -30,6 +30,10 @@ class HomeViewModel: NSObject {
         }
     }
     
+    var noOfSection: Int {
+        return 2
+    }
+    
     init(service: ServiceProviderProtocol = ServiceProvider() ){
         self.service = service
     }
@@ -48,8 +52,8 @@ class HomeViewModel: NSObject {
     }
     
     func filterDataSource() {
-        carousalDataSource = self.feed?.data.filter{$0.designSlug == "CarousalWidget"} ?? []
-        widgetDataSource = self.feed?.data.filter{$0.designSlug == "OTTWidget"} ?? []
+        carousalDataSource = self.feed?.data.filter{$0.designSlug == carousalWidgetKey} ?? []
+        widgetDataSource = self.feed?.data.filter{$0.designSlug == ottWidgetKey} ?? []
     }
     
 }

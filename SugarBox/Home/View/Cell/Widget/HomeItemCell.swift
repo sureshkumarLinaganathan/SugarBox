@@ -18,12 +18,10 @@ class HomeItemCell: UICollectionViewCell {
     }
     
     func setup() {
-        
         ImageCache.shared.loadImage(urlStr: viewModel?.imageUrl ?? "") { image in
             if let image = image {
                 self.imageView.image = image
             }
         }
     }
-    
 }

@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  HomeViewController.swift
 //  SugarBox
 //
 //  Created by Suresh Kumar Linganathan on 21/10/23.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class HomeViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -25,21 +25,21 @@ class ViewController: UIViewController {
         viewModel.delegate = self
     }
     
-    func fethcFeeds() {
+    private func fethcFeeds() {
         viewModel.fetchFeeds()
     }
     
     private func registerCell() {
-        tableView.register(UINib(nibName: "HomeWidgetCell", bundle: nil), forCellReuseIdentifier: "HomeWidgetCell")
-        tableView.register(UINib(nibName: "HomeCarouselCell", bundle: nil), forCellReuseIdentifier: "HomeCarouselCell")
+        tableView.register(UINib(nibName: HomeWidgetCell.identifier, bundle: nil), forCellReuseIdentifier: HomeWidgetCell.identifier)
+        tableView.register(UINib(nibName: HomeCarouselCell.identifier, bundle: nil), forCellReuseIdentifier: HomeCarouselCell.identifier)
     }
     
 }
 
-extension ViewController: UITableViewDataSource, UITableViewDelegate {
+extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return viewModel.noOfSection
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -50,17 +50,18 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         if indexPath.section == 0 {
-            let cell: HomeCarouselCell = tableView.dequeueReusableCell(withIdentifier: "HomeCarouselCell", for: indexPath) as! HomeCarouselCell
+            let cell: HomeCarouselCell = tableView.dequeueReusableCell(withIdentifier: HomeCarouselCell.identifier, for: indexPath) as! HomeCarouselCell
             let cellViewModel = HomeCellViewModel(content: viewModel.carousalDataSource[indexPath.row])
             cell.viewModel = cellViewModel
             return cell
-        } else {
-            let cell: HomeWidgetCell = tableView.dequeueReusableCell(withIdentifier: "HomeWidgetCell" , for: indexPath) as! HomeWidgetCell
-            let cellViewModel = HomeCellViewModel(content: viewModel.widgetDataSource[indexPath.row])
-            cell.viewModel = cellViewModel
-            return cell
         }
+        
+        let cell: HomeWidgetCell = tableView.dequeueReusableCell(withIdentifier: HomeWidgetCell.identifier , for: indexPath) as! HomeWidgetCell
+        let cellViewModel = HomeCellViewModel(content: viewModel.widgetDataSource[indexPath.row])
+        cell.viewModel = cellViewModel
+        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -71,7 +72,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
-extension ViewController: HomeViewModelProtocol {
+extension HomeViewController: HomeViewModelProtocol {
     func reload() {
         self.tableView.reloadData()
     }

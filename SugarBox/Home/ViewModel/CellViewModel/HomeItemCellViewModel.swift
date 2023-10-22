@@ -17,9 +17,9 @@ class HomeItemCellViewModel {
     
     var imageUrl: String {
         
-        let assets = subContent.assets.filter{$0.assetType == "IMAGE"}
+        let assets = subContent.assets.filter{$0.assetType == imageKey}
         if let asset = assets.first {
-            return "https://static01.sboxdc.com/images"+asset.sourcePath
+            return imageBaseUrl+asset.sourcePath
         }
         
         return ""

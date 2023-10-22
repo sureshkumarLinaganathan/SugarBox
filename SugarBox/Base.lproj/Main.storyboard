@@ -12,7 +12,7 @@
         <!--SugarBox-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SugarBox" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="SugarBox" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -21,8 +21,8 @@
                                 <rect key="frame" x="0.0" y="103" width="393" height="715"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <connections>
-                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="snE-Dg-YeT"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="VFo-86-589"/>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="4mF-d8-81Y"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="bhO-b1-mHE"/>
                                 </connections>
                             </tableView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="AHQ-7f-NH3">
@@ -43,8 +43,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="SugarBox" id="Puu-WH-hcY"/>
                     <connections>
-                        <outlet property="activityIndicator" destination="AHQ-7f-NH3" id="vLU-Qi-QBw"/>
-                        <outlet property="tableView" destination="Pda-5F-j0W" id="HCP-fn-xt9"/>
+                        <outlet property="activityIndicator" destination="AHQ-7f-NH3" id="prW-On-ozP"/>
+                        <outlet property="tableView" destination="Pda-5F-j0W" id="9c4-ya-M2O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

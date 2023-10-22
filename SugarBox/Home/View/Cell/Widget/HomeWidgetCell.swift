@@ -25,7 +25,7 @@ class HomeWidgetCell: UITableViewCell {
     }
     
     func registerCell() {
-        collectionView.register(UINib(nibName: "HomeItemCell", bundle: nil), forCellWithReuseIdentifier: "HomeItemCell")
+        collectionView.register(UINib(nibName: HomeItemCell.identifier, bundle: nil), forCellWithReuseIdentifier: HomeItemCell.identifier)
     }
     
     func setupCollectionView() {
@@ -43,7 +43,7 @@ extension HomeWidgetCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell: HomeItemCell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeItemCell", for: indexPath) as! HomeItemCell
+        let cell: HomeItemCell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeItemCell.identifier, for: indexPath) as! HomeItemCell
         if let viewModel = viewModel  {
             let cellViewModel = HomeItemCellViewModel(subContent: viewModel.subContent[indexPath.row])
             cell.viewModel = cellViewModel

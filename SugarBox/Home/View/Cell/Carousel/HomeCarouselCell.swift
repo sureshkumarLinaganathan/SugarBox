@@ -30,7 +30,7 @@ class HomeCarouselCell: UITableViewCell {
     }
     
     private func registerCell() {
-        collectionView.register(UINib(nibName: "HomeCarouselItemCell", bundle: nil), forCellWithReuseIdentifier: "HomeCarouselItemCell")
+        collectionView.register(UINib(nibName: HomeCarouselItemCell.identifier, bundle: nil), forCellWithReuseIdentifier: HomeCarouselItemCell.identifier)
     }
     
     private func setupPageControl() {
@@ -46,7 +46,7 @@ extension HomeCarouselCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell:HomeCarouselItemCell = collectionView.dequeueReusableCell(withReuseIdentifier:"HomeCarouselItemCell", for: indexPath) as! HomeCarouselItemCell
+        let cell:HomeCarouselItemCell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCarouselItemCell.identifier, for: indexPath) as! HomeCarouselItemCell
         if let viewModel = viewModel  {
             let cellViewModel = HomeItemCellViewModel(subContent: viewModel.subContent[indexPath.row])
             cell.viewModel = cellViewModel

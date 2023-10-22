@@ -12,7 +12,7 @@ class HomeWidgetCell: UITableViewCell {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var titleLabel: UILabel!
     
-    var viewModel:HomeWidgetCellViewModel? {
+    var viewModel:HomeCellViewModel? {
         didSet {
             setup()
         }

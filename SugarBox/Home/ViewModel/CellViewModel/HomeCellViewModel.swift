@@ -1,5 +1,5 @@
 //
-//  HomeWidgetCellViewModel.swift
+//  HomeCellViewModel.swift.swift
 //  SugarBox
 //
 //  Created by Suresh Kumar Linganathan on 22/10/23.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeWidgetCellViewModel {
+class HomeCellViewModel {
     
     let content: Content
     
@@ -21,6 +21,10 @@ class HomeWidgetCellViewModel {
     
     var subContent: [SubContent] {
         self.content.contents
+    }
+    
+    var rowCount: Int {
+        self.content.contents.count
     }
     
 }

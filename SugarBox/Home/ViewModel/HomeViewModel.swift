@@ -42,6 +42,7 @@ class HomeViewModel: NSObject {
             self?.delegate?.stopActivityIndicator()
         } failureCallback: {[weak self] message in
             self?.message = message
+            self?.delegate?.showMessgage()
             self?.delegate?.stopActivityIndicator()
         }
     }

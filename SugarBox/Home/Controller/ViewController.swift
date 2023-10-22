@@ -59,7 +59,10 @@ extension ViewController: HomeViewModelProtocol {
     }
     
     func showMessgage() {
-        
+        let alert = UIAlertController(title: "", message: viewModel.message ?? "", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        alert.addAction(okAction)
+        self.present(alert, animated: true)
     }
     
     func startActivityIndicator() {

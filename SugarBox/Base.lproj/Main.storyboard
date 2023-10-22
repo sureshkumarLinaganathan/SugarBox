@@ -25,18 +25,25 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="VFo-86-589"/>
                                 </connections>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="AHQ-7f-NH3">
+                                <rect key="frame" x="178" y="407.66666666666669" width="37" height="37"/>
+                                <color key="color" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="AHQ-7f-NH3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2Ts-K1-SBG"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Pda-5F-j0W" secondAttribute="bottom" id="Dg4-ZH-c2N"/>
                             <constraint firstItem="Pda-5F-j0W" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="TsJ-0o-DH3"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Pda-5F-j0W" secondAttribute="trailing" id="V91-gJ-hON"/>
+                            <constraint firstItem="AHQ-7f-NH3" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="da4-AH-F3z"/>
                             <constraint firstItem="Pda-5F-j0W" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ucE-kv-5bl"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="SugarBox" id="Puu-WH-hcY"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="AHQ-7f-NH3" id="vLU-Qi-QBw"/>
                         <outlet property="tableView" destination="Pda-5F-j0W" id="HCP-fn-xt9"/>
                     </connections>
                 </viewController>

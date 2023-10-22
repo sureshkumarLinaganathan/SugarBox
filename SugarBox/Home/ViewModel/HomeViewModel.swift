@@ -10,6 +10,8 @@ import UIKit
 protocol HomeViewModelProtocol: AnyObject {
     func reload()
     func showMessgage()
+    func startActivityIndicator()
+    func stopActivityIndicator()
 }
 
 class HomeViewModel: NSObject {
@@ -33,11 +35,14 @@ class HomeViewModel: NSObject {
     }
     
     func fetchFeeds() {
+        self.delegate?.startActivityIndicator()
         service.fetchFeeds(pageNo:skip, limit: limit) { [weak self] response in
             self?.feed = response as? Feed
             self?.delegate?.reload()
+            self?.delegate?.stopActivityIndicator()
         } failureCallback: {[weak self] message in
             self?.message = message
+            self?.delegate?.stopActivityIndicator()
         }
     }
     

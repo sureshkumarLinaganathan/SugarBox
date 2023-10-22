@@ -9,10 +9,10 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let viewModel = HomeViewModel()
-    
-    
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    let viewModel = HomeViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +21,7 @@ class ViewController: UIViewController {
         fethcFeeds()
     }
     
-    func bindWithViewModel() {
+    private func bindWithViewModel() {
         viewModel.delegate = self
     }
     
@@ -29,7 +29,7 @@ class ViewController: UIViewController {
         viewModel.fetchFeeds()
     }
     
-    func registerCell() {
+    private func registerCell() {
         tableView.register(UINib(nibName: "HomeWidgetCell", bundle: nil), forCellReuseIdentifier: "HomeWidgetCell")
     }
     
@@ -60,6 +60,14 @@ extension ViewController: HomeViewModelProtocol {
     
     func showMessgage() {
         
+    }
+    
+    func startActivityIndicator() {
+        activityIndicator.startAnimating()
+    }
+    
+    func stopActivityIndicator() {
+        activityIndicator.stopAnimating()
     }
 }
 

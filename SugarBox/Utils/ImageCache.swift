@@ -13,8 +13,8 @@ class ImageCache {
     static let shared = ImageCache()
     
     private init() {
-        let memoryCapacity = 100 * 1024 * 1024 // 100MB
-        let diskCapacity = 100 * 1024 * 1024 // 100MB
+        let memoryCapacity = 100 * 1024 * 1024
+        let diskCapacity = 100 * 1024 * 1024 
         let cache = URLCache(memoryCapacity: memoryCapacity, diskCapacity: diskCapacity, diskPath: "imageCache")
         URLCache.shared = cache
     }
